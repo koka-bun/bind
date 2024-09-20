@@ -1,5 +1,5 @@
 {
     "koka.languageServer.compilerArguments": [
-        "--include=node_modules/koka-pkg/std"
+        "--include=."
     ]
 }

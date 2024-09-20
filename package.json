@@ -9,7 +9,11 @@
   },
   "devDependencies": {
     "@koka-bun/cli": "koka-bun/cli#642051b",
+    "std": "koka-community/std#main",
     "@types/bun": "latest",
     "typescript": "5.6.2"
+  },
+  "koka-bun": {
+    "root": "."
   }
 }

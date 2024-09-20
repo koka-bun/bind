@@ -1,4 +1,4 @@
-import js
+import koka-bun/js
 
 pub struct headers
 
@@ -13,7 +13,7 @@ pub struct response
   status: int = 200
   headers: maybe<headers> = Nothing
 
-val ts-server: (int, (request) -> response) -> io unit = require("./serve.ts")
+val ts-server: (int, (request) -> response) -> io unit = require("koka-bun/serve.ts")
 
 pub fun server(port: int, callback : (request) -> response) : io unit
   ts-server(port, callback)

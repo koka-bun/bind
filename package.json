@@ -1,0 +1,15 @@
+{
+  "name": "koka",
+  "module": "dist/bundle.js",
+  "type": "module",
+  "scripts": {
+    "build": "koka-bun build",
+    "start": "bun run dist/main.js",
+    "clean": "koka-bun clean"
+  },
+  "devDependencies": {
+    "@koka-bun/cli": "koka-bun/cli#642051b",
+    "@types/bun": "latest",
+    "typescript": "5.6.2"
+  }
+}

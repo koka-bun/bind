@@ -8,7 +8,7 @@
     "clean": "koka-bun clean"
   },
   "devDependencies": {
-    "@koka-bun/cli": "koka-bun/cli#7624ba0",
+    "@koka-bun/cli": "koka-bun/cli#e2ef956",
     "@types/bun": "latest",
     "typescript": "5.6.2"
   },

@@ -1,9 +1,13 @@
+import koka-bun/file
 import koka-bun/serve
+import koka-bun/ext/async
+
+fun load-self(): <async,ndet> string
+  val out = try fn()
+    file/new("test/main.kk").text
+  match out
+    Ok(t) -> t
+    Error(e) -> e.show
 
 fun main()
-  val serve-options = options(
-    port = Just(3000)
-  )
-  println("Listening on port 3000")
-  with request <- serve(serve-options)
-  Response(Just("Hello, World!"))
+  load-self()

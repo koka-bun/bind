@@ -1,3 +1,5 @@
+module koka-bun/serve
+
 import koka-bun/js
 
 pub struct headers
@@ -13,7 +15,13 @@ pub struct response
   status: int = 200
   headers: maybe<headers> = Nothing
 
-val ts-server: (int, (request) -> response) -> io unit = require("koka-bun/serve.ts")
+pub struct options
+  port: maybe<int>
 
-pub fun server(port: int, callback : (request) -> response) : io unit
-  ts-server(port, callback)
+pub fun options( port : maybe<int> ) : maybe<options>
+  Just(Options(
+    port = port
+  ))
+
+pub val serve: (maybe<options>, (request) -> response) -> io unit
+  = require("koka-bun/serve.ts")

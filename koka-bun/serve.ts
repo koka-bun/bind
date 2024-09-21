@@ -19,11 +19,18 @@ interface ServerResponse {
     headers: ServerHeaders | null;
 }
 
+interface ServeOptions {
+    port: number | null;
+}
+
 type ServerCallback = (context: ServerRequest) => ServerResponse;
 
-export default function server(port: number, callback: ServerCallback) {
+export default function server(
+    options: ServeOptions | null,
+    fetch: (request: ServerRequest) => ServerResponse,
+) {
     Bun.serve({
-        port,
+        port: options?.port ?? undefined,
         fetch(request: Request) {
             const headers: ServerHeaders = {};
             request.headers.forEach((value, key) => {
@@ -35,7 +42,7 @@ export default function server(port: number, callback: ServerCallback) {
                 headers,
                 body: request.body?.toString() ?? null
             };
-            const response = callback(requestObject);
+            const response = fetch(requestObject);
             return new Response(response.body?.value ?? null, {
                 status: response.status,
                 headers: response.headers ?? {}
